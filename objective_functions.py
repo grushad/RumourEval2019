@@ -13,20 +13,20 @@ from branch2treelabels import branch2treelabels
 def objective_function_stance_branchLSTM_RumEv(params):
       
     x_train = np.load(os.path.join('preprocessing/saved_dataRumEval2019',
-                                   'train/train_array.npy'))
+                                   'train/train_array.npy'),allow_pickle=True)
     y_train = np.load(os.path.join('preprocessing/saved_dataRumEval2019',
-                                   'train/fold_stance_labels.npy'))
+                                   'train/fold_stance_labels.npy'),allow_pickle=True)
     y_train_cat = []
     for i in range(len(y_train)):
         y_train_cat.append(to_categorical(y_train[i], num_classes=4))
     y_train_cat = np.asarray(y_train_cat)
     x_test = np.load(os.path.join('preprocessing/saved_dataRumEval2019',
-                                  'dev/train_array.npy'))
+                                  'dev/train_array.npy'),allow_pickle=True)
     y_test = np.load(os.path.join('preprocessing/saved_dataRumEval2019',
-                                  'dev/fold_stance_labels.npy'))
+                                  'dev/fold_stance_labels.npy'),allow_pickle=True)
     
     ids_test = np.load(os.path.join('preprocessing/saved_dataRumEval2019',
-                                    'dev/tweet_ids.npy'))
+                                    'dev/tweet_ids.npy'),allow_pickle=True)
 
     y_pred, confidence = LSTM_model_stance(x_train, y_train_cat,
                                            x_test, params)
