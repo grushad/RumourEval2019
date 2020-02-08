@@ -11,7 +11,7 @@ feats ('text' or 'SemEval')
 
 """
 from preprocessing_tweets import load_dataset
-from preprocessing_reddit import load_data
+#from preprocessing_reddit import load_data
 from transform_feature_dict import transform_feature_dict
 from extract_thread_features import extract_thread_features_incl_response
 import help_prep_functions
@@ -35,11 +35,11 @@ def prep_pipeline(dataset='RumEval2019', feature_set=['avgw2v']):
     path = 'saved_data'+dataset
     folds = {}
     folds = load_dataset()
-    reddit = load_data()
+    #reddit = load_data()
    
-    folds['train'].extend(reddit['train'])
-    folds['dev'].extend(reddit['dev'])
-    folds['test'].extend(reddit['test'])
+    #folds['train'].extend(reddit['train'])
+    #folds['dev'].extend(reddit['dev'])
+    #folds['test'].extend(reddit['test'])
 
     help_prep_functions.loadW2vModel()
 

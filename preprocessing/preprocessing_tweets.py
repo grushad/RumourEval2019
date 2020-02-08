@@ -13,11 +13,11 @@ def load_true_labels():
     
     tweet_label_dict = {}
     veracity_label_dict = {}
-    path_dev = "../rumoureval-2019-training-data/dev-key.json"
+    path_dev = "C:/Users/Dell/Downloads/rumoureval2019/rumoureval-2019-training-data/dev-key.json"
     with open(path_dev, 'r') as f:
         dev_key = json.load(f)
             
-    path_train = "../rumoureval-2019-training-data/train-key.json"
+    path_train = "C:/Users/Dell/Downloads/rumoureval2019/rumoureval-2019-training-data/train-key.json"
     with open(path_train, 'r') as f:
         train_key = json.load(f)
 
@@ -40,7 +40,7 @@ def load_dataset():
     dev_tweets = dev.keys()
     train_tweets = train.keys()
     # Load folds and conversations
-    path_to_folds = '../rumoureval-2019-training-data/twitter-english'
+    path_to_folds = 'C:/Users/Dell/Downloads/rumoureval2019/rumoureval-2019-training-data/twitter-english'
     folds = sorted(os.listdir(path_to_folds))
     newfolds = [i for i in folds if i[0] != '.']
     folds = newfolds

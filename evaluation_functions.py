@@ -4,7 +4,7 @@
 This code contains several versions of evaluation functions
 """
 import numpy as np
-from LSTM_models import LSTM_model_stance,LSTM_model_veracity
+from LSTM_models import LSTM_model_stance#,LSTM_model_veracity
 #from LSTM_models import build_LSTM_model_veracity
 #from rmse import rmse
 import os
@@ -88,28 +88,28 @@ def evaluation_function_stance_branchLSTM_RumEv(params):
 #%%
 
 
-def evaluation_function_veracity_branchLSTM_RumEv(params):
+# def evaluation_function_veracity_branchLSTM_RumEv(params):
 
-    path = 'preprocessing/saved_dataRumEval2019'
-    x_train = np.load(os.path.join(path, 'train/train_array.npy'))
-    y_train = np.load(os.path.join(path, 'train/labels.npy'))
-    x_dev = np.load(os.path.join(path, 'dev/train_array.npy'))
-    y_dev = np.load(os.path.join(path, 'dev/labels.npy'))
-    x_test = np.load(os.path.join(path, 'test/train_array.npy'))
-    ids_test = np.load(os.path.join(path, 'test/ids.npy'))
-    # join dev and train
-    x_dev = pad_sequences(x_dev, maxlen=len(x_train[0]), dtype='float32',
-                          padding='post', truncating='post', value=0.)
-    x_train = np.concatenate((x_train, x_dev), axis=0)
-    y_train = np.concatenate((y_train, y_dev), axis=0)
-    y_train = to_categorical(y_train, num_classes=None)
-    y_pred, confidence = LSTM_model_veracity(x_train, y_train, x_test, params, eval=True)
-    # get tree labels
+#     path = 'preprocessing/saved_dataRumEval2019'
+#     x_train = np.load(os.path.join(path, 'train/train_array.npy'))
+#     y_train = np.load(os.path.join(path, 'train/labels.npy'))
+#     x_dev = np.load(os.path.join(path, 'dev/train_array.npy'))
+#     y_dev = np.load(os.path.join(path, 'dev/labels.npy'))
+#     x_test = np.load(os.path.join(path, 'test/train_array.npy'))
+#     ids_test = np.load(os.path.join(path, 'test/ids.npy'))
+#     # join dev and train
+#     x_dev = pad_sequences(x_dev, maxlen=len(x_train[0]), dtype='float32',
+#                           padding='post', truncating='post', value=0.)
+#     x_train = np.concatenate((x_train, x_dev), axis=0)
+#     y_train = np.concatenate((y_train, y_dev), axis=0)
+#     y_train = to_categorical(y_train, num_classes=None)
+#     y_pred, confidence = LSTM_model_veracity(x_train, y_train, x_test, params, eval=True)
+#     # get tree labels
     
-    trees, tree_prediction, tree_confidence = branch2treelabels_test(
-                                                                ids_test,
-                                                                y_pred,
-                                                                confidence)
+#     trees, tree_prediction, tree_confidence = branch2treelabels_test(
+#                                                                 ids_test,
+#                                                                 y_pred,
+#                                                                 confidence)
     
         
-    return trees, tree_prediction, tree_confidence
+#     return trees, tree_prediction, tree_confidence
