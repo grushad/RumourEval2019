@@ -68,7 +68,7 @@ def convertsave_competitionformat(idsA, predictionsA, idsB, predictionsB, confid
 #%%
 print ('Rumour Stance classification')
 
-ntrials = 100
+ntrials = 10
 task = 'stance'
 paramsA, trialsA = parameter_search(ntrials, objective_function_stance_branchLSTM_RumEv, task)
 #%%
@@ -107,4 +107,5 @@ test_result_id, test_result_predictions = evaluation_function_stance_branchLSTM_
 #%%
 #convertsave_competitionformat(dev_result_id, dev_result_predictions, dev_result_idB, dev_result_predictionsB,confidenceB )
 
-#a = convertsave_competitionformat(test_result_id, test_result_predictions, test_result_idB, test_result_predictionsB,confidenceB )
+a = convertsave_competitionformat(test_result_id, test_result_predictions, test_result_idB, test_result_predictionsB,confidenceB )
+print(a['subtaskaenglish'][0])
